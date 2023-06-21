@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bootstrap Entry Page</title>
+    {% load bootstrap4 %}
+
+    <!-- Bootstrap CSS -->
+    {% bootstrap_css %}
+
+</head>
+<body>
+    <div class="container mt-5">
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+        <a class="nav-link active" data-toggle="tab" href="#basic-info">Informações Básicas</a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#social-info">Convívio Social</a>
+        </li>
+    </ul>
+
+    <div class="tab-content mt-3">
+        <div class="tab-pane fade show active" id="basic-info">
+        <h4>Informações Básicas</h4>
+        <form>
+            <div class="form-group">
+            <label for="name">Nome</label>
+            <input type="text" class="form-control" id="name" placeholder="Digite seu nome">
+            </div>
+            <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" placeholder="Digite seu email">
+            </div>
+            <div class="form-group">
+            <label for="age">Idade</label>
+            <input type="number" class="form-control" id="age" placeholder="Digite sua idade">
+            </div>
+            <button type="submit" class="btn btn-primary">Enviar</button>
+        </form>
+        </div>
+
+        <div class="tab-pane fade" id="social-info">
+        <h4>Informações de Convívio Social</h4>
+        <form>
+            <div class="form-group">
+            <label for="hobbies">Hobbies</label>
+            <input type="text" class="form-control" id="hobbies" placeholder="Digite seus hobbies">
+            </div>
+            <div class="form-group">
+            <label for="interests">Interesses</label>
+            <input type="text" class="form-control" id="interests" placeholder="Digite seus interesses">
+            </div>
+            <div class="form-group">
+            <label for="bio">Biografia</label>
+            <textarea class="form-control" id="bio" rows="3" placeholder="Digite uma breve biografia"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Enviar</button>
+        </form>
+        </div>
+    </div>
+    </div>
+
+    <!-- Adicione os arquivos JS do Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</body>
+</html>
+    
