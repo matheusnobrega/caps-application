@@ -39,6 +39,7 @@ def vw_register(request):
         nome_usuario = request.POST['nome-usuario']
         primeira_senha = request.POST['primeira-senha']
         segunda_senha = request.POST['segunda-senha']
+        funcao = request.POST['funcao']
         
 
         if primeira_senha != segunda_senha:
@@ -52,8 +53,16 @@ def vw_register(request):
         
         usuario = User.objects.create_user(username=nome_usuario, password=primeira_senha)
         
-        servidor = Servidor(nome=nome, cpf=cpf, usuario=usuario)
-        servidor.save()
+        if funcao == 'servidor':
+            cress = request.POST['CRESS']
+            servidor = Servidor(nome=nome, cpf=cpf, cfess=cress, usuario=usuario)
+            servidor.save()
+
+        else:
+            crm = request.POST['CRM']
+            medico = Medico(nome=nome, cpf=cpf, crm=crm, usuario=usuario)
+            medico.save()
+
 
         login(request, usuario)
         return redirect('index')
