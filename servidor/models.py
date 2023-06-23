@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.admin import User
 
-class Medico(models.Model):
+class Servidor(models.Model):
     nome = models.CharField(max_length=150)
     cpf = models.CharField(max_length=11)
     cfess = models.CharField(max_length=11)

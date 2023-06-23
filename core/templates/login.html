@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row justify-content-center mt-5">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header">
+            Tela de Login
+          </div>
+          <div class="card-body">
+            <form action="" method="POST">
+              {% csrf_token %}
+              <div class="form-group">
+                <label for="nome-usuario">Usuário</label>
+                <input type="text" class="form-control" name="nome-usuario" id="nome-usuario" required>
+              </div>
+              <div class="form-group">
+                <label for="senha">Senha</label>
+                <input type="password" name="senha" class="form-control" id="senha" required>
+              </div>
+              <div class="form-group">
+                <label for="funcao">Função</label>
+                <select class="form-control" name="funcao" id="funcao">
+                  <option value="servidor">Servidor</option>
+                  <option value="medico">Médico</option>
+                </select>
+              </div>
+              <button type="submit" class="btn btn-primary mt-3">Entrar</button>
+            </form>
+            <div class="mt-3">
+              <p>Não tem uma conta? <a href="{% url 'vw_register' %}">Cadastre-se</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+{% endblock %}

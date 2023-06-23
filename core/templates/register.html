@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="form-container">
+    <div class="container">
+      <div class="row justify-content-center mt-5">
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-header">
+              Tela de Cadastro
+            </div>
+            <div class="card-body">
+                <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" href="#medico">Médico</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#servidor">Servidor</a>
+                    </li>
+                </ul>
+
+                <div class="tab-content mt-3">
+                    <div class="tab-pane fade show active" id="medico">
+                        <form action="" method="POST">
+                            {% csrf_token %}
+                            <div class="form-group">
+                            <label for="nome">Nome</label>
+                            <input type="text" class="form-control" name="nome" id="nome" required>
+                            </div>
+                            <div class="form-group">
+                            <label for="CRM">CRM</label>
+                            <input type="text" class="form-control" name="CRM" id="CRM" required>
+                            </div>
+                            <div class="form-group">
+                            <label for="CPF">CPF</label>
+                            <input type="text" class="form-control" name="CPF"  required>
+                            </div>
+                            
+                            <div class="form-group">
+                            <label for="nome-usuario">Usuário</label>
+                            <input type="text" class="form-control" name="nome-usuario" id="nome-usuario" required>
+                            </div>
+                            
+                            <div class="form-group">
+                            <label for="primeira-senha">Senha</label>
+                            <input type="primeira-senha" name="primeira-senha" class="form-control" id="primeira-senha" required>
+                            </div>
+                            <div class="form-group">
+                            <label for="segunda-senha">Confirme a senha</label>
+                            <input type="segunda-senha" name="segunda-senha" class="form-control" id="segunda-senha" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary mt-3">Cadastrar</button>
+                        </form>
+                        <div class="mt-3">
+                            <p>Já possui conta? <a href="{% url 'vw_login' %}">Entre</a></p>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="servidor">
+                        <form action="" method="POST">
+                            {% csrf_token %}
+                            <div class="form-group">
+                            <label for="nome">Nome</label>
+                            <input type="text" class="form-control" name="nome" id="nome" required>
+                            </div>
+                            <div class="form-group">
+                            <label for="CRESS">CRESS</label>
+                            <input type="text" class="form-control" name="CRESS" id="CRESS" required>
+                            </div>
+                            <div class="form-group">
+                            <label for="CPF">CPF</label>
+                            <input type="text" class="form-control" name="CPF"  required>
+                            </div>
+                            <div class="form-group">
+                            <label for="nome-usuario">Usuário</label>
+                            <input type="text" class="form-control" name="nome-usuario" id="nome-usuario" required>
+                            </div>
+                            
+                            <div class="form-group">
+                            <label for="primeira-senha">Senha</label>
+                            <input type="primeira-senha" name="primeira-senha" class="form-control" id="primeira-senha" required>
+                            </div>
+                            <div class="form-group">
+                            <label for="segunda-senha">Confirme a senha</label>
+                            <input type="segunda-senha" name="segunda-senha" class="form-control" id="segunda-senha" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary mt-3">Cadastrar</button>
+                        </form>
+                        <div class="mt-3">
+                            <p>Já possui conta? <a href="{% url 'vw_login' %}">Entre</a></p>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+<!-- Adicione os arquivos JS do Bootstrap -->
+
+
+  {% endblock %}
