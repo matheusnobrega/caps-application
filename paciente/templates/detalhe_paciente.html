@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <h1 class="mt-5">Informações do Paciente</h1>
+    <div class="card mt-4">
+      <div class="card-header">
+        Informações Básicas
+      </div>
+      <div class="card-body">
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Nome:</label>
+          <div class="col-sm-10">
+            <p class="form-control-static">{{ paciente.nome }}</p>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Endereço:</label>
+          <div class="col-sm-10">
+            <p class="form-control-static">{{ paciente.endereco }}</p>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Data de Nascimento:</label>
+          <div class="col-sm-10">
+            <p class="form-control-static">{{ paciente.data_nascimento }}</p>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Sexo:</label>
+          <div class="col-sm-10">
+            <p class="form-control-static">{{ paciente.sexo }}</p>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Naturalidade:</label>
+          <div class="col-sm-10">
+            <p class="form-control-static">{{ paciente.naturalidade }}</p>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">RG:</label>
+          <div class="col-sm-10">
+            <p class="form-control-static">{{ paciente.rg }}</p>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">CPF:</label>
+          <div class="col-sm-10">
+            <p class="form-control-static">{{ paciente.cpf }}</p>
+          </div>
+        </div>
+        <button class="btn btn-primary" data-toggle="modal" data-target="#editModal">Editar Informações</button>
+      </div>
+    </div>
+
+    <!-- Tabela de consumo de drogas -->
+    <div class="card mt-4">
+      <div class="card-header">
+        Consumo de Drogas
+      </div>
+      <div class="card-body">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Nome da Droga</th>
+              <th>Idade de Primeiro Uso</th>
+              <th>Frequência</th>
+              <th>Data do Último Uso</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Álcool</td>
+              <td>18 anos</td>
+              <td>Ocasional</td>
+              <td>10/06/2023</td>
+              <td>
+                <button class="btn btn-danger btn-sm">Deletar</button>
+              </td>
+            </tr>
+            <tr>
+              <td>Cannabis</td>
+              <td>20 anos</td>
+              <td>Diário</td>
+              <td>05/06/2023</td>
+              <td>
+                <button class="btn btn-danger btn-sm">Deletar</button>
+              </td>
+            </tr>
+            <!-- Adicione mais linhas de acordo com as drogas consumidas -->
+          </tbody>
+        </table>
+        <a href="{% url 'paciente:adiciona_droga' paciente.id %}" class="btn btn-primary">Adicionar Droga</a>
+      </div>
+    </div>
+
+    <!-- Modal para editar informações do paciente -->
+    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+      <!-- Conteúdo do modal -->
+    </div>
+
+    <!-- Modal para adicionar droga -->
+    <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel" aria-hidden="true">
+      <!-- Conteúdo do modal -->
+    </div>
+  </div>
+
+  {% endblock %}

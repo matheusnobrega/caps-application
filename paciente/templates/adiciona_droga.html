@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<div class="container">
+    <h1>Tabela de Drogas</h1>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Droga</th>
+          <th>Idade de primeiro uso</th>
+          <th>Frequência</th>
+          <th>Último uso</th>
+        </tr>
+      </thead>
+      <tbody id="registros">
+      </tbody>
+    </table>
+    
+    <div class="form-row">
+      <div class="col-md-3">
+        <select id="droga" class="form-control">  
+            {% for droga in drogas %}
+            <option value="{{ droga.id }}">{{ droga.nome }}</option>
+            {% endfor %}
+        </select>
+      </div>
+      <div class="col-md-3">
+        <input id="idade" type="text" class="form-control" placeholder="Idade de primeiro uso">
+      </div>
+      <div class="col-md-3">
+        <input id="frequencia" type="text" class="form-control" placeholder="Frequência">
+      </div>
+      <div class="col-md-3">
+        <input id="ultimoUso" type="text" class="form-control" placeholder="Último uso">
+      </div>
+    </div>
+    
+    <button id="cadastrarBtn" class="btn btn-primary mt-3">Cadastrar</button>
+  </div>
+
+  {% endblock %}
