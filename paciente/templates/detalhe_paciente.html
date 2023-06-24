@@ -94,12 +94,16 @@
       <div class="card-header">
         Evolução
       </div>
+      
       <div class="card-body">
-        <p>{{ evolucao.texto_descritivo }}</p>
-        <p>Data de Inserção: {{ evolucao.data_insercao|date:"d/m/Y" }}</p>
-        <p>Nome do Servidor: {{ evolucao.nome_servidor }}</p>
-        <a href="" class="btn btn-primary">Adicionar Evolução</a>
+        {% for evolucao in evolucoes %}
+        <p>{{ evolucao.descritivo }}</p>
+        <p>{{ evolucao.data|date:"d/m/Y" }}</p>
+        <p><b>{{ evolucao.servidor.nome }}</b></p>
+        {% endfor %}
+        <a href="{% url 'paciente:adiciona_evolucao' paciente.id %}" class="btn btn-primary">Adicionar Evolução</a>
       </div>
+      
     </div>
     
 

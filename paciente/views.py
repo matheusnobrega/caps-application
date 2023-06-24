@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Paciente, Droga, DrogaPaciente
+from .models import Paciente, Droga, DrogaPaciente, Evolucao
+from datetime import date
 
 def cadastrar_paciente(request):
     if request.method == 'POST':
@@ -35,10 +36,12 @@ def listar_pacientes(request):
 def detalhe_paciente(request, pk):
     paciente = get_object_or_404(Paciente, pk=pk)
     drogas = DrogaPaciente.objects.filter(paciente__id=pk)
+    evolucoes = Evolucao.objects.filter(paciente__id=pk)
 
     return render(request, 'detalhe_paciente.html', {
         'paciente': paciente,
         'drogas': drogas,
+        'evolucoes': evolucoes,
     })
 
 def adiciona_droga(request, pk):
@@ -65,5 +68,20 @@ def adiciona_droga(request, pk):
     })
 
 def adiciona_evolucao(request, pk):
+
+    if request.method == 'POST':
+        descritivo = request.POST['descricao']
+
+        data = date.today()
+        usuario = request.user
+        servidor = usuario.servidor
+        paciente = Paciente.objects.get(pk=pk)
+
+        evolucao = Evolucao(descritivo=descritivo, data=data,
+                            paciente=paciente, servidor=servidor)
+        evolucao.save()
+
+        return redirect('paciente:detalhe_paciente', pk)
+
 
     return render(request, 'adiciona_evolucao.html')
