@@ -63,3 +63,7 @@ def adiciona_droga(request, pk):
     return render(request, 'adiciona_droga.html', {
         'drogas': drogas,
     })
+
+def adiciona_evolucao(request, pk):
+
+    return render(request, 'adiciona_evolucao.html')

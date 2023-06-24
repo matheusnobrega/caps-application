@@ -1,4 +1,5 @@
 from django.db import models
+from servidor.models import Servidor
 
 
 class Droga(models.Model):
@@ -31,6 +32,6 @@ class Evolucao(models.Model):
     descritivo = models.CharField(max_length=150)
     data = models.DateField()
     paciente = models.ForeignKey(Paciente, related_name='pacientes', on_delete=models.CASCADE)
-
+    servidor = models.ForeignKey(Servidor, related_name='servidores', on_delete=models.CASCADE)
 
 

@@ -90,6 +90,19 @@
       </div>
     </div>
 
+    <div class="card mt-4">
+      <div class="card-header">
+        Evolução
+      </div>
+      <div class="card-body">
+        <p>{{ evolucao.texto_descritivo }}</p>
+        <p>Data de Inserção: {{ evolucao.data_insercao|date:"d/m/Y" }}</p>
+        <p>Nome do Servidor: {{ evolucao.nome_servidor }}</p>
+        <a href="" class="btn btn-primary">Adicionar Evolução</a>
+      </div>
+    </div>
+    
+
     <!-- Modal para editar informações do paciente -->
     <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
       <!-- Conteúdo do modal -->

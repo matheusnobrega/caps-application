@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <div class="card mt-4">
+      <div class="card-header">
+        Adicionar Evolução
+      </div>
+      <div class="card-body">
+        <form action="" method="POST">
+          {% csrf_token %}
+          <div class="form-group">
+            <label for="texto_descritivo">Texto Descritivo</label>
+            <textarea class="form-control" id="texto_descritivo" name="texto_descritivo" rows="5" required></textarea>
+          </div>
+          <div class="form-group">
+            <label for="data_insercao">Data de Inserção</label>
+            <input type="date" class="form-control" id="data_insercao" name="data_insercao" required>
+          </div>
+          <div class="form-group">
+            <label for="nome_servidor">Nome do Servidor</label>
+            <input type="text" class="form-control" id="nome_servidor" name="nome_servidor" required>
+          </div>
+          <button type="submit" class="btn btn-primary">Adicionar Evolução</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  {% endblock %}
