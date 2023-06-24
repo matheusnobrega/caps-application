@@ -17,27 +17,31 @@
       <tbody id="registros">
       </tbody>
     </table>
-    
+    <form action="" method="POST">
+        {% csrf_token %}
     <div class="form-row">
-      <div class="col-md-3">
-        <select id="droga" class="form-control">  
+        <div class="col-md-3">
+        
+        <select id="droga" name="droga" class="form-control">  
             {% for droga in drogas %}
             <option value="{{ droga.id }}">{{ droga.nome }}</option>
             {% endfor %}
         </select>
-      </div>
-      <div class="col-md-3">
-        <input id="idade" type="text" class="form-control" placeholder="Idade de primeiro uso">
-      </div>
-      <div class="col-md-3">
-        <input id="frequencia" type="text" class="form-control" placeholder="Frequência">
-      </div>
-      <div class="col-md-3">
-        <input id="ultimoUso" type="text" class="form-control" placeholder="Último uso">
-      </div>
+        </div>
+        <div class="col-md-3">
+            <input name="idade" type="text" class="form-control" placeholder="Idade de primeiro uso">
+        </div>
+        <div class="col-md-3">
+            <input name="frequencia" type="text" class="form-control" placeholder="Frequência">
+        </div>
+        <div class="col-md-3">
+            <input name="ultimo-uso" type="date" class="form-control" placeholder="Último uso">
+        </div>
     </div>
     
-    <button id="cadastrarBtn" class="btn btn-primary mt-3">Cadastrar</button>
-  </div>
+    
+    <button type="submit" id="cadastrarBtn" class="btn btn-primary mt-3">Cadastrar</button>
+    </form>
+</div>
 
   {% endblock %}
