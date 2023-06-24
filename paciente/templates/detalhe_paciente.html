@@ -72,25 +72,18 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>Álcool</td>
-              <td>18 anos</td>
-              <td>Ocasional</td>
-              <td>10/06/2023</td>
-              <td>
-                <button class="btn btn-danger btn-sm">Deletar</button>
-              </td>
-            </tr>
-            <tr>
-              <td>Cannabis</td>
-              <td>20 anos</td>
-              <td>Diário</td>
-              <td>05/06/2023</td>
-              <td>
-                <button class="btn btn-danger btn-sm">Deletar</button>
-              </td>
-            </tr>
-            <!-- Adicione mais linhas de acordo com as drogas consumidas -->
+            
+            {% for droga in drogas %}
+                <tr>
+                    <td>{{ droga.droga.nome }}</td>
+                    <td>{{ droga.idade_pu }} anos</td>
+                    <td>{{ droga.frequencia }}</td>
+                    <td>{{ droga.ultimo_uso|date:"d/m/Y"}}</td>
+                    <td>
+                    <button class="btn btn-danger btn-sm">Deletar</button>
+                    </td>
+                </tr>
+            {% endfor %}
           </tbody>
         </table>
         <a href="{% url 'paciente:adiciona_droga' paciente.id %}" class="btn btn-primary">Adicionar Droga</a>
