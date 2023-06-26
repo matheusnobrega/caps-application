@@ -6,12 +6,19 @@
 
 <div class="row mt-4">
     <div class="col-md-6">
-    <div class="form-group">
+      <div class="form-group">
         <label for="search">Pesquisar:</label>
-        <input type="text" class="form-control" id="search" placeholder="Digite o nome do paciente">
+        <div class="input-group">
+          <input type="text" class="form-control" id="search" placeholder="Digite o nome do paciente">
+          <div class="input-group-append">
+            <span class="input-group-text">
+              <i class="fas fa-plus"></i>
+            </span>
+          </div>
+        </div>
+      </div>
     </div>
-    </div>
-</div>
+  </div>
 
 <!-- Tabela de pacientes -->
 <table class="table table-striped mt-4">

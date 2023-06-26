@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Paciente, Droga, DrogaPaciente, Evolucao
+from unidade_acolhimento.models import UnidadeAcolhimento
 from datetime import date
 
 def cadastrar_paciente(request):
@@ -85,3 +86,13 @@ def adiciona_evolucao(request, pk):
 
 
     return render(request, 'adiciona_evolucao.html')
+
+def insere_unidade_acolhimento(request, pk):
+    if request.method == 'POST':
+        paciente = get_object_or_404(Paciente, pk=pk)
+        unidade_acolhimento = UnidadeAcolhimento.objects.filter().first()
+
+        paciente.unidade_acolhimento = unidade_acolhimento
+        paciente.save()
+
+        return redirect('paciente:detalhe_paciente', pk)

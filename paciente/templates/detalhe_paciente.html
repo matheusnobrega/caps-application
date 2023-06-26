@@ -52,6 +52,10 @@
           </div>
         </div>
         <button class="btn btn-primary" data-toggle="modal" data-target="#editModal">Editar Informações</button>
+        <form method="POST" action="{% url 'paciente:insere_unidade_acolhimento' paciente.id %}">
+          {% csrf_token %}
+          <button type="submit" class="btn btn-primary mt-3">Desfazer compra</button>
+      </form>
       </div>
     </div>
 

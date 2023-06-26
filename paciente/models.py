@@ -1,5 +1,6 @@
 from django.db import models
 from servidor.models import Servidor
+from unidade_acolhimento.models import UnidadeAcolhimento
 
 
 class Droga(models.Model):
@@ -19,6 +20,7 @@ class Paciente(models.Model):
     cns = models.CharField(max_length=50, null=True, blank=True)
     situacao_rua = models.BooleanField(null=True, blank=True)
     drogas = models.ManyToManyField(Droga, through='DrogaPaciente', blank=True)
+    unidade_acolhimento = models.ForeignKey(UnidadeAcolhimento, null=True, blank=True, on_delete=models.SET_NULL)
 
 
 class DrogaPaciente(models.Model):
