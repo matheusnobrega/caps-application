@@ -2,56 +2,17 @@
 
 {% block content %}
 
-    <div class="container mt-5">
-    <ul class="nav nav-tabs">
-        <li class="nav-item">
-        <a class="nav-link active" data-toggle="tab" href="#basic-info">Informações Básicas</a>
-        </li>
-        <li class="nav-item">
-        <a class="nav-link" data-toggle="tab" href="#social-info">Convívio Social</a>
-        </li>
-    </ul>
-
-    <div class="tab-content mt-3">
-        <div class="tab-pane fade show active" id="basic-info">
-        <h4>Informações Básicas</h4>
-        <form>
-            <div class="form-group">
-            <label for="name">Nome</label>
-            <input type="text" class="form-control" id="name" placeholder="Digite seu nome">
-            </div>
-            <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" class="form-control" id="email" placeholder="Digite seu email">
-            </div>
-            <div class="form-group">
-            <label for="age">Idade</label>
-            <input type="number" class="form-control" id="age" placeholder="Digite sua idade">
-            </div>
-            <button type="submit" class="btn btn-primary">Enviar</button>
-        </form>
-        </div>
-
-        <div class="tab-pane fade" id="social-info">
-        <h4>Informações de Convívio Social</h4>
-        <form>
-            <div class="form-group">
-            <label for="hobbies">Hobbies</label>
-            <input type="text" class="form-control" id="hobbies" placeholder="Digite seus hobbies">
-            </div>
-            <div class="form-group">
-            <label for="interests">Interesses</label>
-            <input type="text" class="form-control" id="interests" placeholder="Digite seus interesses">
-            </div>
-            <div class="form-group">
-            <label for="bio">Biografia</label>
-            <textarea class="form-control" id="bio" rows="3" placeholder="Digite uma breve biografia"></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary">Enviar</button>
-        </form>
-        </div>
+<div class="container mt-4">
+    <div class="jumbotron">
+      <h1 class="display-4">Bem-vindo(a) ao CAPS AD III de Samambaia!</h1>
+      <p class="lead">O CAPS AD III de Samambaia é um Centro de Atenção Psicossocial especializado em Álcool e Drogas, oferecendo atendimento e suporte a pessoas com dependência química.</p>
+      <hr class="my-4">
+      <p>Aqui no CAPS, nosso objetivo é fornecer tratamento e cuidados de qualidade, ajudando nossos pacientes a superar o vício e promover sua reintegração social e familiar.</p>
+      <p class="lead">
+        <a class="btn btn-primary btn-lg" href="#" role="button">Saiba mais</a>
+      </p>
     </div>
-    </div>
+  </div>
 
 {% endblock %}
     
