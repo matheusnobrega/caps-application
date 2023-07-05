@@ -52,10 +52,21 @@
           </div>
         </div>
         <button class="btn btn-primary" data-toggle="modal" data-target="#editModal">Editar Informações</button>
+        
+        {% if paciente.unidade_acolhimento is null %}
         <form method="POST" action="{% url 'paciente:insere_unidade_acolhimento' paciente.id %}">
           {% csrf_token %}
-          <button type="submit" class="btn btn-primary mt-3">Desfazer compra</button>
-      </form>
+          <button type="submit" class="btn btn-success mt-3">Inserir na unidade</button>
+        </form>
+        {% else %}
+        <form method="POST" action="{% url 'paciente:remove_unidade_acolhimento' paciente.id %}">
+          {% csrf_token %}
+          <button type="submit" class="btn btn-danger mt-3">Remover da unidade</button>
+        </form>
+        {% endif %}
+        
+          
+        
       </div>
     </div>
 
@@ -84,7 +95,10 @@
                     <td>{{ droga.frequencia }}</td>
                     <td>{{ droga.ultimo_uso|date:"d/m/Y"}}</td>
                     <td>
-                    <button class="btn btn-danger btn-sm">Deletar</button>
+                      <form method="POST" action="{% url 'paciente:remove_droga' paciente.id droga.id %}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger btn-sm">Deletar</button>
+                      </form>
                     </td>
                 </tr>
             {% endfor %}

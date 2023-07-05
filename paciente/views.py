@@ -68,6 +68,14 @@ def adiciona_droga(request, pk):
         'drogas': drogas,
     })
 
+def remove_droga(request, pk, dp_pk):
+    droga_paciente = get_object_or_404(DrogaPaciente, pk=dp_pk)
+
+    if request.method == 'POST':
+        droga_paciente.delete()
+
+        return redirect('paciente:detalhe_paciente', pk)
+
 def adiciona_evolucao(request, pk):
 
     if request.method == 'POST':
@@ -93,6 +101,14 @@ def insere_unidade_acolhimento(request, pk):
         unidade_acolhimento = UnidadeAcolhimento.objects.filter().first()
 
         paciente.unidade_acolhimento = unidade_acolhimento
+        paciente.save()
+
+        return redirect('paciente:detalhe_paciente', pk)
+    
+def remove_unidade_acolhimento(request, pk):
+    if request.method == 'POST':
+        paciente = get_object_or_404(Paciente, pk=pk)
+        paciente.unidade_acolhimento = None
         paciente.save()
 
         return redirect('paciente:detalhe_paciente', pk)
