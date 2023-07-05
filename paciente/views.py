@@ -96,3 +96,34 @@ def insere_unidade_acolhimento(request, pk):
         paciente.save()
 
         return redirect('paciente:detalhe_paciente', pk)
+    
+def apresenta_estatisticas(request):
+    consumo_drogas = DrogaPaciente.objects.all()
+    pacientes = Paciente.objects.all()
+
+    total_masculino = pacientes.filter(sexo=False).count()
+    total_feminino = pacientes.filter(sexo=True).count()
+
+    labels_sexo = ['Masculino', 'Feminino']
+    data_sexo = [total_masculino, total_feminino]
+
+    drogas = {}
+
+    for consumo in consumo_drogas:
+        droga = consumo.droga.nome
+        if droga in drogas:
+            drogas[droga] += 1
+        else:
+            drogas[droga] = 1
+
+    labels = list(drogas.keys())
+    data = list(drogas.values())
+    
+    print(labels, data)
+
+    return render(request, 'apresenta_estatisticas.html', {
+        'labels': labels,
+        'data': data,
+        'labels_sexo': labels_sexo,
+        'data_sexo': data_sexo,
+    })

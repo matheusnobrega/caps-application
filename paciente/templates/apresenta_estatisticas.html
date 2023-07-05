@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<div class="container">
+    
+    <h1>Gráficos</h1>
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Consumo de Drogas</h2>
+            <canvas id="chart" style="max-width: 600px; max-height: 500px;"></canvas>
+        </div>
+        <div class="col-md-6">
+            <h2>Pacientes por Sexo</h2>
+            <canvas id="chart-sexo" style="max-width: 600px; max-height: 500px;"></canvas>
+        </div>
+    </div>
+</div>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var labels = {{ labels|safe }};
+            var data = {{ data|safe }};
+
+            // Configurar o gráfico usando o Chart.js
+            var ctx = document.getElementById('chart').getContext('2d');
+            var chart = new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        data: data,
+                        backgroundColor: ['rgba(255, 99, 132, 0.7)', 'rgba(54, 162, 235, 0.7)', 'rgba(255, 206, 86, 0.7)', 'rgba(75, 192, 192, 0.7)', 'rgba(153, 102, 255, 0.7)'],
+                        borderColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 206, 86, 1)', 'rgba(75, 192, 192, 1)', 'rgba(153, 102, 255, 1)'],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                maintainAspectRatio: false,
+                responsive: true,
+                width: 400, // Defina o tamanho desejado para a largura
+                height: 300 // Defina o tamanho desejado para a altura
+                }
+            });
+
+            var labels_sexo = {{ labels_sexo|safe }};
+            var data_sexo = {{ data_sexo|safe }};
+
+            // Configurar o gráfico de barras usando o Chart.js
+            var ctxSexo = document.getElementById('chart-sexo').getContext('2d');
+            var chartSexo = new Chart(ctxSexo, {
+                type: 'bar',
+                data: {
+                    labels: labels_sexo,
+                    datasets: [{
+                        label: 'Quantidade de Pacientes',
+                        data: data_sexo,
+                        backgroundColor: ['rgba(255, 99, 132, 0.7)', 'rgba(54, 162, 235, 0.7)'],
+                        borderColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)'],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    maintainAspectRatio: false,
+                    responsive: true,
+                    width: 400, // Defina o tamanho desejado para a largura
+                    height: 300 
+                }
+            });
+        });
+    </script>
+{% endblock %}
+
