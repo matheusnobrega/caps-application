@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h1>Unidade de Acolhimento</h1>
+
+    <div class="card mb-4">
+        <div class="card-body">
+            <h5 class="card-title">Vagas</h5>
+            <p class="card-text">
+                <strong>Vagas ocupadas:</strong> {{ vagas_ocupadas }}<br>
+                <strong>Total de vagas:</strong> {{ unidade_acolhimento.num_leitos }}
+            </p>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Pacientes</h5>
+            <ul class="list-group">
+                {% for paciente in pacientes %}
+                    <li class="list-group-item">{{ paciente.nome }} (Idade: {{ paciente.idade }})</li>
+                {% empty %}
+                    <li class="list-group-item">Nenhum paciente registrado</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+  {% endblock %}
