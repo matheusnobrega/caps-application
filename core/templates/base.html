@@ -21,16 +21,20 @@
       </button>
       <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul class="navbar-nav">
+          {% if user.is_authenticated %}
           <li class="nav-item">
-            <a class="nav-link" href="#">Un. Acolhimento</a>
+            <a class="nav-link" href="{% url 'unidade-acolhimento:detalhe_unidade' %}">Un. Acolhimento</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{% url 'paciente:listar_pacientes' %}">Pacientes</a>
           </li>
-          
-          {% if not user.is_authenticated %}
           <li class="nav-item">
-            <a class="nav-link" href="#">Login</a>
+            <a class="nav-link" href="#">{{ user.username }}</a>
+          </li>
+
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'vw_login' %}">Login</a>
           </li>
           {% endif %}
         </ul>
