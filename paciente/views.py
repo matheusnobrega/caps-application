@@ -127,8 +127,10 @@ def insere_unidade_acolhimento(request, pk):
         paciente = get_object_or_404(Paciente, pk=pk)
         unidade_acolhimento = UnidadeAcolhimento.objects.filter().first()
 
-        paciente.unidade_acolhimento = unidade_acolhimento
-        paciente.save()
+        qtd_vagas_ocupadas = Paciente.objects.exclude(unidade_acolhimento__isnull=True).count()
+        if unidade_acolhimento.num_leitos > qtd_vagas_ocupadas:
+            paciente.unidade_acolhimento = unidade_acolhimento
+            paciente.save()
 
         return redirect('paciente:detalhe_paciente', pk)
     
