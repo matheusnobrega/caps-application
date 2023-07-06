@@ -27,7 +27,10 @@ def vw_login(request):
             return HttpResponse('Erro na realização do login')
         
     return render(request, 'login.html')
-        
+
+def vw_logout(request):
+    logout(request)
+    return redirect('index')
 
 def vw_register(request):
     if request.user.is_authenticated:
@@ -68,3 +71,4 @@ def vw_register(request):
         return redirect('index')
 
     return render(request, 'register.html')
+
