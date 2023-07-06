@@ -11,7 +11,7 @@
         <form action="" method="POST">
             {% csrf_token %}
             <div class="form-group">
-            <label for="name">Nome</label>
+            <label for="name">Nome *</label>
             <input type="text" class="form-control" id="name" name="nome">
             </div>
 
@@ -69,6 +69,11 @@
             <div class="form-group">
                 <label for="cns">CNS</label>
                 <input type="text" class="form-control" id="cns" name="cns">
+            </div>
+
+            <div class="form-group">
+              <label for="RG">RG</label>
+              <input type="text" class="form-control" id="rg" name="rg">
             </div>
 
             <div class="form-group">

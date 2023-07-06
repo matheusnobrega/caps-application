@@ -18,13 +18,16 @@ def cadastrar_paciente(request):
         telefone = request.POST['telefone']
         cpf = request.POST['cpf']
         cns = request.POST['cns']
+        rg = request.POST['rg']
         situacao_rua = request.POST['situacao-rua']
 
         novo_paciente = Paciente(nome=nome, data_nascimento=data_nasc, endereco=endereco,
                             sexo=sexo, identidade_genero=identidade_genero, filiacao=filiacao,
                             naturalidade=naturalidade, telefone=telefone, cpf=cpf,
-                            cns=cns)
+                            cns=cns, rg=rg)
         novo_paciente.save()
+
+        return HttpResponseRedirect(reverse('paciente:detalhe_paciente', args=[novo_paciente.id]))
         
     return render(request, 'insere_paciente.html')
 
@@ -45,6 +48,7 @@ def editar_paciente(request, pk):
         paciente.cpf = request.POST['cpf']
         paciente.cns = request.POST['cns']
         paciente.situacao_rua = request.POST['situacao-rua']
+        paciente.rg = request.POST['rg']
         paciente.save()
 
         return HttpResponseRedirect(reverse('paciente:detalhe_paciente', args=[paciente.id]))
