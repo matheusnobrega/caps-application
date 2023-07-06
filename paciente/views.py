@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import Paciente, Droga, DrogaPaciente, Evolucao
 from unidade_acolhimento.models import UnidadeAcolhimento
 from datetime import date
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 
 def cadastrar_paciente(request):
     if request.method == 'POST':
@@ -24,8 +26,33 @@ def cadastrar_paciente(request):
                             cns=cns)
         novo_paciente.save()
         
-
     return render(request, 'insere_paciente.html')
+
+def editar_paciente(request, pk):
+    paciente = get_object_or_404(Paciente, pk=pk)
+    data_nascimento = paciente.data_nascimento.strftime('%Y-%m-%d')
+
+    if request.method == 'POST':
+        paciente.nome = request.POST['nome']
+        paciente.data_nascimento = request.POST['data-nascimento']
+        paciente.endereco = request.POST['endereco']
+        paciente.sexo = request.POST['sexo']
+        paciente.identidade_genero = request.POST['identidade-genero']
+        paciente.filiacao = request.POST['filiacao']
+        paciente.endereco = request.POST['endereco']
+        paciente.naturalidade = request.POST['naturalidade']
+        paciente.telefone = request.POST['telefone']
+        paciente.cpf = request.POST['cpf']
+        paciente.cns = request.POST['cns']
+        paciente.situacao_rua = request.POST['situacao-rua']
+        paciente.save()
+
+        return HttpResponseRedirect(reverse('paciente:detalhe_paciente', args=[paciente.id]))
+
+    return render(request, 'atualiza_paciente.html', {
+        'paciente': paciente,
+        'data_nascimento': data_nascimento,
+    })
 
 def listar_pacientes(request):
     pacientes =  Paciente.objects.all()
@@ -108,6 +135,7 @@ def insere_unidade_acolhimento(request, pk):
 def remove_unidade_acolhimento(request, pk):
     if request.method == 'POST':
         paciente = get_object_or_404(Paciente, pk=pk)
+
         paciente.unidade_acolhimento = None
         paciente.save()
 

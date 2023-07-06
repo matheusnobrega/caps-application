@@ -51,7 +51,7 @@
             <p class="form-control-static">{{ paciente.cpf }}</p>
           </div>
         </div>
-        <button class="btn btn-primary" data-toggle="modal" data-target="#editModal">Editar Informações</button>
+        <a  type="button" class="btn btn-primary" href="{% url 'paciente:editar_paciente' paciente.id %}">Editar Informações</a>
         
         {% if paciente.unidade_acolhimento is null %}
         <form method="POST" action="{% url 'paciente:insere_unidade_acolhimento' paciente.id %}">
