@@ -24,31 +24,35 @@
         <div class="form-group row">
           <label class="col-sm-2 col-form-label">Data de Nascimento:</label>
           <div class="col-sm-10">
-            <p class="form-control-static">{{ paciente.data_nascimento }}</p>
+            <p class="form-control-static">{{ paciente.data_nascimento|date:"d/m/Y" }}</p>
           </div>
         </div>
         <div class="form-group row">
           <label class="col-sm-2 col-form-label">Sexo:</label>
           <div class="col-sm-10">
-            <p class="form-control-static">{{ paciente.sexo }}</p>
+            {% if paciente.sexo %}
+            <p class="form-control-static">Feminino</p>
+            {% else %}
+            <p class="form-control-static">Masculino</p>
+            {% endif %}
           </div>
         </div>
         <div class="form-group row">
           <label class="col-sm-2 col-form-label">Naturalidade:</label>
           <div class="col-sm-10">
-            <p class="form-control-static">{{ paciente.naturalidade }}</p>
+            <p class="form-control-static">{{ paciente.naturalidade|default_if_none:'' }}</p>
           </div>
         </div>
         <div class="form-group row">
           <label class="col-sm-2 col-form-label">RG:</label>
           <div class="col-sm-10">
-            <p class="form-control-static">{{ paciente.rg }}</p>
+            <p class="form-control-static">{{ paciente.rg|default_if_none:'' }}</p>
           </div>
         </div>
         <div class="form-group row">
           <label class="col-sm-2 col-form-label">CPF:</label>
           <div class="col-sm-10">
-            <p class="form-control-static">{{ paciente.cpf }}</p>
+            <p class="form-control-static">{{ paciente.cpf|default_if_none:'' }}</p>
           </div>
         </div>
         <a  type="button" class="btn btn-primary" href="{% url 'paciente:editar_paciente' paciente.id %}">Editar Informações</a>
@@ -104,7 +108,7 @@
             {% endfor %}
           </tbody>
         </table>
-        <a href="{% url 'paciente:adiciona_droga' paciente.id %}" class="btn btn-primary">Adicionar Droga</a>
+        <a href="{% url 'paciente:adiciona_droga' paciente.id %}" class="btn btn-primary">Adicionar Consumo</a>
       </div>
     </div>
 
